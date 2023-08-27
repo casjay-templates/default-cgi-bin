@@ -47,14 +47,13 @@ SOURCE_GIT_REPO="https://github.com/casjay-templates/default-cgi-bin"
 [ -n "$TMP" ] && [ -d "$TMP" ] && TMP_DIR="$TMP/default_cgi_bin_$$" || TMP_DIR="/tmp/default_cgi_bin_$$"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Main application
-if [ -d "$WEB_SERVER_CGI_BIN_DIR/.git" ]; then
-  rm -Rf "$WEB_SERVER_CGI_BIN_DIR"
-fi
 echo "Installing to $WEB_SERVER_CGI_BIN_DIR"
+[ -d "$WEB_SERVER_CGI_BIN_DIR" ] && rm -Rf "$WEB_SERVER_CGI_BIN_DIR"
 [ "$USER" = "root" ] && runas_user="" || runas_user="sudo"
 $runas_user mkdir -p "$WEB_SERVER_CGI_BIN_DIR"
 $runas_user git clone -q "$SOURCE_GIT_REPO" "$TMP_DIR"
 $runas_user cp -Rf "$TMP_DIR/." "$WEB_SERVER_CGI_BIN_DIR"
+[ -d "$TMP_DIR" ] && rm -Rf "$TMP_DIR"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # End application
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
