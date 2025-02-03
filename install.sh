@@ -42,7 +42,7 @@ __function_exists() { builtin type $1 >/dev/null 2>&1 || return 1; }
 # Define variables
 DEFAULT_COLOR="254"
 DEFAULT_CGI_BIN_EXIT_STATUS=0
-WEB_SERVER_CGI_BIN_DIR="/usr/share/httpd/cgi-bin"
+WEB_SERVER_CGI_BIN_DIR="/usr/local/share/httpd/cgi-bin"
 SOURCE_GIT_REPO="https://github.com/casjay-templates/default-cgi-bin"
 [ -n "$TMP" ] && [ -d "$TMP" ] && TMP_DIR="$TMP/default_cgi_bin_$$" || TMP_DIR="/tmp/default_cgi_bin_$$"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
